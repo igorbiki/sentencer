@@ -56,7 +56,7 @@ class Generator {
     $template = $input_template ?? $this->randomTemplate();
     $tags = [];
 
-    $occurrences = preg_match_all('/\{\{(.+?)\}\}/', $template, $tags);
+    $occurrences = preg_match_all('/{{(.+?)}}/', $template, $tags);
 
     if ($occurrences > 0) {
       $replacements = $tags[0];
