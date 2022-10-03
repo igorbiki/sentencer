@@ -2,6 +2,9 @@
 
 namespace Sentencer\sentences;
 
+/**
+ * Sentecer required functions.
+ */
 interface SentencerInterface {
 
   /**

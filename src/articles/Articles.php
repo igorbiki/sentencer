@@ -79,12 +79,12 @@ class Articles implements ArticlesInterface {
 
     $obj ??= $this->getMap();
 
-    // Take first character from provided word.
+    // Take first character from provided word. Using multibyte string function
+    // to allow characters such as "∞".
     $key = mb_substr($word, 0, 1);
     $obj = $obj[$key] ?? NULL;
 
-    if (($obj !== NULL)) {
-      //return find(word.slice(1), obj, obj._ || article);
+    if ($obj !== NULL) {
       return $this->find(mb_substr($word, 1), $obj, $obj['_'] ?? $article);
     }
 

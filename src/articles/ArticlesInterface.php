@@ -2,6 +2,9 @@
 
 namespace Sentencer\articles;
 
+/**
+ * Interface to articilize input and return a|an prepended.
+ */
 interface ArticlesInterface {
   /**
    * Appends article before provided word(s).

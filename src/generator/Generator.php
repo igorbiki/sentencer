@@ -3,7 +3,6 @@
 namespace Sentencer\generator;
 
 use JsonException;
-use Sentencer\sentences\Sentencer;
 use Sentencer\sentences\SentencerInterface;
 
 class Generator {
@@ -95,10 +94,15 @@ class Generator {
     return $output;
   }
 
+  /**
+   * Randomly selects phrase, in 33% of cases.
+   *
+   * @throws \Exception
+   */
   private function randomPhrase(): string {
     $phrase = '';
 
-    if (random_int(1, 100) > 75) {
+    if (random_int(1, 100) > 66) {
       $phrase = $this->phrases[array_rand($this->phrases)];
     }
 

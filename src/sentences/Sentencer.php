@@ -26,12 +26,32 @@ class Sentencer implements SentencerInterface {
    */
   public const WORD_INPUT_FILE = __DIR__ . "/../config/words.json";
 
+  /**
+   * List of all loaded adjectives.
+   *
+   * @var array|mixed
+   */
   protected array $adjectives;
 
+  /**
+   * List of all loaded nouns.
+   *
+   * @var array|mixed
+   */
   protected array $nouns;
 
+  /**
+   * External class that pluralize noun.
+   *
+   * @var \Doctrine\Inflector\Inflector
+   */
   protected Inflector $inflector;
 
+  /**
+   * A or AN logic.
+   *
+   * @var \Sentencer\articles\ArticlesInterface
+   */
   protected ArticlesInterface $articles;
 
   /**
@@ -41,15 +61,12 @@ class Sentencer implements SentencerInterface {
    *
    * @return array
    *    Parsed array.
+   *
+   * @throws \JsonException
    */
   private function wordParser(): array {
     if (file_exists(self::WORD_INPUT_FILE) && $file = file_get_contents(self::WORD_INPUT_FILE)) {
-      try {
-        $words = json_decode($file, TRUE, 512, JSON_THROW_ON_ERROR);
-      }
-      catch (JsonException $e) {
-        $words = [];
-      }
+      $words = json_decode($file, TRUE, 512, JSON_THROW_ON_ERROR);
     }
 
     return $words ?? [];
@@ -57,6 +74,8 @@ class Sentencer implements SentencerInterface {
 
   /**
    * Default constructor.
+   *
+   * @throws \JsonException
    */
   public function __construct(ArticlesInterface $articles) {
     $words = $this->wordParser();

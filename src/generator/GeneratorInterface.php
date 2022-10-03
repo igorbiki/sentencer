@@ -2,6 +2,9 @@
 
 namespace Sentencer\generator;
 
+/**
+ * Listing required function that actual generate must implement.
+ */
 interface GeneratorInterface {
 
   /**
@@ -22,4 +25,5 @@ interface GeneratorInterface {
    *   Generated title.
    */
   public function generateTitle(): string;
+
 }

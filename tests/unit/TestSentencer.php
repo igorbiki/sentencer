@@ -5,11 +5,15 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use Sentencer\articles\Articles;
+use Sentencer\generator\Generator;
 use Sentencer\sentences\Sentencer;
+use Sentencer\sentences\SentencerInterface;
 
 final class TestSentencer extends TestCase {
 
-  protected Sentencer $sentencer;
+  protected SentencerInterface $sentencer;
+
+  protected Generator $generator;
 
   /**
    * {@inheritDoc}
@@ -18,10 +22,16 @@ final class TestSentencer extends TestCase {
     parent::__construct();
   }
 
+  /**
+   * Prepare environment for testing.
+   *
+   * @throws \JsonException
+   */
   protected function setUp(): void {
     parent::setUp();
 
     $this->sentencer = new Sentencer(new Articles());
+    $this->generator = new Generator($this->sentencer);
   }
 
   public function testConfig(): void {
@@ -32,4 +42,13 @@ final class TestSentencer extends TestCase {
   }
 
 
+  public function testSentences(): void {
+    $this->assertEquals('a car', $this->sentencer->a_noun('car'), 'Incorrect adjective detected.');
+  }
+
+  public function testGenerator(): void {
+    $this->assertEquals('test sentence', $this->generator->parseTemplate('test sentence'));
+    $this->assertNotEmpty($this->generator->generateSentence());
+    $this->assertNotEmpty($this->generator->generateSentence(2));
+  }
 }
