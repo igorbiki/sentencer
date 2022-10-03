@@ -28,6 +28,14 @@
     "{{ an_adjective }} {{ noun }} last seen roaming in the area!",
     "Can {{ noun }} be held responsible for {{ an_adjective }} {{ noun }}?"
   ],
+  "ctas": [
+    "{{ an_adjective }} {{ noun }} arrived!",
+    "{{ a_noun }} is HERE!",
+    "New version released!",
+    "Future is NOW!",
+    "The {{ noun }} has landed!",
+    "{{ an adjective }} app is ready"
+  ],
   "sentences": [
     "the {{ noun }} is {{ a_noun }}",
     "{{ a_noun }} is {{ an_adjective }} {{ noun }}",
