@@ -14,6 +14,14 @@ use Sentencer\articles\Articles;
 class Sentencer implements SentencerInterface {
 
   /**
+   * Allowed actions that can be called dynamically. This is not to call any
+   * other function when used in {{ method }} format.
+   */
+  public const ALLOWED_ACTIONS = [
+    'noun', 'a_noun', 'nouns', 'adjective', 'an_adjective',
+  ];
+
+  /**
    * JSON mapping file, adjusted for PHP.
    */
   public const WORD_INPUT_FILE = __DIR__ . "/../config/words.json";

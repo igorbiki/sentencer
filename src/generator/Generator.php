@@ -52,16 +52,37 @@ class Generator {
     return $this->templates[array_rand($this->templates)] ?? '';
   }
 
-  public function generateSentences(int $number = 1): string {
+  public function parseTemplate(string $input_template = NULL): string {
+    $template = $input_template ?? $this->randomTemplate();
+    $tags = [];
+
+    $occurrences = preg_match_all('/\{\{(.+?)\}\}/', $template, $tags);
+
+    if ($occurrences > 0) {
+      $replacements = $tags[0];
+      $actions = array_map('trim', $tags[1]);
+
+      foreach ($actions as $key => $action) {
+        if ($action && in_array($action, $this->sentencer::ALLOWED_ACTIONS, TRUE)) {
+          $word = $this->sentencer->$action();
+
+            $template = preg_replace('/' . $replacements[$key] . '/', $word, $template, 1);
+        }
+      }
+    }
+
+    return $template;
+  }
+
+  public function generateSentence(int $number = 1): string {
     $output = '';
 
     if ($number > self::MAX_SENTENCES) {
       $number = self::MAX_SENTENCES;
     }
 
-    for ($i = 0; $i <= $number; $i++) {
-
-      $output .= ' ' . $this->randomPhrase() . ucfirst($this->randomTemplate()) . '.';
+    for ($i = 1; $i <= $number; $i++) {
+      $output .= ' ' . ucfirst($this->randomPhrase() . $this->parseTemplate()) . '.';
     }
 
     return $output;
