@@ -4,6 +4,7 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
+use Sentencer\articles\Articles;
 use Sentencer\sentences\Sentencer;
 
 final class TestSentencer extends TestCase {
@@ -20,7 +21,7 @@ final class TestSentencer extends TestCase {
   protected function setUp(): void {
     parent::setUp();
 
-    $this->sentencer = new Sentencer();
+    $this->sentencer = new Sentencer(new Articles());
   }
 
   public function testConfig(): void {
