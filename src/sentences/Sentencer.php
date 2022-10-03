@@ -68,14 +68,14 @@ class Sentencer implements SentencerInterface {
    * {@inheritDoc}
    */
   public function a_noun(string $input = NULL): string {
-    return $this->articles->articlize($this->noun());
+    return $this->articles->articlize($input ?? $this->noun());
   }
 
   /**
    * {@inheritDoc}
    */
   public function nouns(string $input = NULL): string {
-    return $this->inflector->pluralize($this->noun());
+    return $this->inflector->pluralize($input ?? $this->noun());
   }
 
   /**
@@ -89,7 +89,7 @@ class Sentencer implements SentencerInterface {
    * {@inheritDoc}
    */
   public function an_adjective(string $input = NULL): string {
-    return $this->articles->articlize($this->adjective());
+    return $this->articles->articlize($input ?? $this->adjective());
   }
 
   /**
