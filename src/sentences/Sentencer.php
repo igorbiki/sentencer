@@ -5,6 +5,7 @@ namespace Sentencer\sentences;
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
+use JsonException;
 use Sentencer\articles\Articles;
 
 /**
@@ -15,7 +16,7 @@ class Sentencer implements SentencerInterface {
   /**
    * JSON mapping file, adjusted for PHP.
    */
-  public const INPUT_FILE = __DIR__ . "/../config/words.json";
+  public const WORD_INPUT_FILE = __DIR__ . "/../config/words.json";
 
   protected array $adjectives;
 
@@ -33,12 +34,12 @@ class Sentencer implements SentencerInterface {
    * @return array
    *    Parsed array.
    */
-  private function parser(): array {
-    if (file_exists(self::INPUT_FILE) && $file = file_get_contents(self::INPUT_FILE)) {
+  private function wordParser(): array {
+    if (file_exists(self::WORD_INPUT_FILE) && $file = file_get_contents(self::WORD_INPUT_FILE)) {
       try {
         $words = json_decode($file, TRUE, 512, JSON_THROW_ON_ERROR);
       }
-      catch (\JsonException $e) {
+      catch (JsonException $e) {
         $words = [];
       }
     }
@@ -50,7 +51,7 @@ class Sentencer implements SentencerInterface {
    * Default constructor.
    */
   public function __construct() {
-    $words = $this->parser();
+    $words = $this->wordParser();
     $this->adjectives = $words['adjectives'] ?? [];
     $this->nouns = $words['nouns'] ?? [];
     $this->inflector = InflectorFactory::createForLanguage(Language::ENGLISH)->build();
@@ -61,7 +62,7 @@ class Sentencer implements SentencerInterface {
    * {@inheritDoc}
    */
   public function noun(): string {
-    return $this->nouns[array_rand($this->nouns, 1)];
+    return $this->nouns[array_rand($this->nouns)];
   }
 
   /**
@@ -82,7 +83,7 @@ class Sentencer implements SentencerInterface {
    * {@inheritDoc}
    */
   public function adjective(): string {
-    return $this->adjectives[array_rand($this->adjectives, 1)];
+    return $this->adjectives[array_rand($this->adjectives)];
   }
 
   /**
