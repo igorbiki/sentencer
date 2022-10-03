@@ -15,6 +15,8 @@ class Generator {
 
   protected array $phrases;
 
+  protected array $titles;
+
   protected Sentencer $sentencer;
 
   public function __construct() {
@@ -22,6 +24,7 @@ class Generator {
 
     $this->templates = $templates['sentences'] ?? [];
     $this->phrases = $templates['phrases'] ?? [];
+    $this->titles = $templates['titles'] ?? [];
 
     $this->sentencer = new Sentencer();
   }
@@ -96,6 +99,12 @@ class Generator {
     }
 
     return $phrase;
+  }
+
+  public function generateTitle(): string {
+    $title_template = $this->titles[array_rand($this->titles)];
+
+    return ucfirst($this->parseTemplate($title_template));
   }
 
 }

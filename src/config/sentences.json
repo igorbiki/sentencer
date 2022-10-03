@@ -22,6 +22,12 @@
     "In ancient times ",
     "Recent controversy aside, "
   ],
+  "titles": [
+    "{{ nouns }} head to the polls today to elect their {{ noun }}",
+    "{{ noun }} confronted by {{ nouns }} during last night debate",
+    "{{ an_adjective }} {{ noun }} last seen roaming in the area!",
+    "Can {{ noun }} be held responsible for {{ an_adjective }} {{ noun }}?"
+  ],
   "sentences": [
     "the {{ noun }} is {{ a_noun }}",
     "{{ a_noun }} is {{ an_adjective }} {{ noun }}",
