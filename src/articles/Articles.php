@@ -14,7 +14,7 @@ use JsonException;
  * http://home.nerbonne.org/A-vs-An/
  * was used as the basis for the dataset.
  */
-class Articles {
+class Articles implements ArticlesInterface {
 
   /**
    * JSON mapping file, adjusted for PHP.
@@ -92,13 +92,7 @@ class Articles {
   }
 
   /**
-   * Appends article before provided word(s).
-   *
-   * @param string $words
-   *   Word(s) without article.
-   *
-   * @return string
-   *   Word(s) with articles appended.
+   * {@inheritDoc}
    */
   public function articlize(string $words): string {
     if ($words === "") {

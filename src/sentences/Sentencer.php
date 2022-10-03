@@ -6,7 +6,7 @@ use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
 use JsonException;
-use Sentencer\articles\Articles;
+use Sentencer\articles\ArticlesInterface;
 
 /**
  * Generates random sentence.
@@ -32,7 +32,7 @@ class Sentencer implements SentencerInterface {
 
   protected Inflector $inflector;
 
-  protected Articles $articles;
+  protected ArticlesInterface $articles;
 
   /**
    * Word parser.
@@ -58,12 +58,12 @@ class Sentencer implements SentencerInterface {
   /**
    * Default constructor.
    */
-  public function __construct() {
+  public function __construct(ArticlesInterface $articles) {
     $words = $this->wordParser();
     $this->adjectives = $words['adjectives'] ?? [];
     $this->nouns = $words['nouns'] ?? [];
     $this->inflector = InflectorFactory::createForLanguage(Language::ENGLISH)->build();
-    $this->articles = new Articles();
+    $this->articles = $articles;
   }
 
   /**

@@ -4,6 +4,7 @@ namespace Sentencer\generator;
 
 use JsonException;
 use Sentencer\sentences\Sentencer;
+use Sentencer\sentences\SentencerInterface;
 
 class Generator {
 
@@ -17,16 +18,16 @@ class Generator {
 
   protected array $titles;
 
-  protected Sentencer $sentencer;
+  protected SentencerInterface $sentencer;
 
-  public function __construct() {
+  public function __construct(SentencerInterface $sentencer) {
     $templates = $this->templateParser();
 
     $this->templates = $templates['sentences'] ?? [];
     $this->phrases = $templates['phrases'] ?? [];
     $this->titles = $templates['titles'] ?? [];
 
-    $this->sentencer = new Sentencer();
+    $this->sentencer = $sentencer;
   }
 
   /**
@@ -77,6 +78,9 @@ class Generator {
     return $template;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   public function generateSentence(int $number = 1): string {
     $output = '';
 
@@ -101,6 +105,9 @@ class Generator {
     return $phrase;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   public function generateTitle(): string {
     $title_template = $this->titles[array_rand($this->titles)];
 
