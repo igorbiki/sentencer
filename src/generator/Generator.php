@@ -7,7 +7,7 @@ use Sentencer\sentences\Sentencer;
 
 class Generator {
 
-  private const MAX_SENTENCES = 10;
+  private const MAX_SENTENCES = 20;
 
   public const TEMPLATE_INPUT_FILE = __DIR__ . "/../config/sentences.json";
 
