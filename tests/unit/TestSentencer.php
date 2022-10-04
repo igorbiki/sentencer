@@ -6,6 +6,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use PHPUnit\Framework\TestCase;
 use Sentencer\articles\Articles;
 use Sentencer\generator\Generator;
+use Sentencer\generator\GeneratorInterface;
 use Sentencer\sentences\Sentencer;
 use Sentencer\sentences\SentencerInterface;
 
@@ -13,7 +14,7 @@ final class TestSentencer extends TestCase {
 
   protected SentencerInterface $sentencer;
 
-  protected Generator $generator;
+  protected GeneratorInterface $generator;
 
   /**
    * {@inheritDoc}
