@@ -17,6 +17,8 @@ class Generator implements GeneratorInterface {
 
   protected array $titles;
 
+  protected array $labels;
+
   protected SentencerInterface $sentencer;
 
   public function __construct(SentencerInterface $sentencer) {
@@ -25,6 +27,7 @@ class Generator implements GeneratorInterface {
     $this->templates = $templates['sentences'] ?? [];
     $this->phrases = $templates['phrases'] ?? [];
     $this->titles = $templates['titles'] ?? [];
+    $this->labels = $templates['labels'] ?? [];
 
     $this->sentencer = $sentencer;
   }
@@ -125,6 +128,15 @@ class Generator implements GeneratorInterface {
     $title_template = $this->titles[array_rand($this->titles)];
 
     return ucfirst($this->parseTemplate($title_template));
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function generateShortLabel(): string {
+    $label_template = $this->labels[array_rand($this->labels)];
+
+    return ucfirst($this->parseTemplate($label_template));
   }
 
 }

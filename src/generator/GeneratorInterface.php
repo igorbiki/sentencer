@@ -26,4 +26,12 @@ interface GeneratorInterface {
    */
   public function generateTitle(): string;
 
+  /**
+   * Creates short string that can be used for title or cta label.
+   *
+   * @return string
+   *    Short string, such as label.
+   */
+  public function generateShortLabel(): string;
+
 }

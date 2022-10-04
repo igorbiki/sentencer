@@ -26,15 +26,18 @@
     "{{ nouns }} head to the polls today to elect their {{ noun }}",
     "{{ noun }} confronted by {{ nouns }} during last night debate",
     "{{ an_adjective }} {{ noun }} last seen roaming in the area!",
-    "Can {{ noun }} be held responsible for {{ an_adjective }} {{ noun }}?"
+    "Can {{ noun }} be held responsible for {{ an_adjective }} {{ noun }}?",
+    "{{ an_adjective }} {{ noun }} is back"
   ],
-  "ctas": [
+  "labels": [
     "{{ an_adjective }} {{ noun }} arrived!",
     "{{ a_noun }} is HERE!",
     "New version released!",
     "Future is NOW!",
     "The {{ noun }} has landed!",
-    "{{ an adjective }} app is ready"
+    "{{ an_adjective }} app is ready",
+    "See more",
+    "Follow for more"
   ],
   "sentences": [
     "the {{ noun }} is {{ a_noun }}",
