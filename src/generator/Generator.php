@@ -5,7 +5,7 @@ namespace Sentencer\generator;
 use JsonException;
 use Sentencer\sentences\SentencerInterface;
 
-class Generator {
+class Generator implements GeneratorInterface {
 
   private const MAX_SENTENCES = 20;
 
@@ -36,25 +36,34 @@ class Generator {
    *
    * @return array
    *    Parsed array.
+   *
+   * @throws \JsonException
    */
   private function templateParser(): array {
     if (file_exists(self::TEMPLATE_INPUT_FILE) && $file = file_get_contents(self::TEMPLATE_INPUT_FILE)) {
-      try {
-        $templates = json_decode($file, TRUE, 512, JSON_THROW_ON_ERROR);
-      }
-      catch (JsonException $e) {
-        $templates = [];
-      }
+      $templates = json_decode($file, TRUE, 512, JSON_THROW_ON_ERROR);
     }
 
     return $templates ?? [];
   }
 
 
+  /**
+   * Return random sentence template.
+   *
+   * @return string
+   *   Random template from the list of sentence templates or empty string.
+   */
   public function randomTemplate(): string {
     return $this->templates[array_rand($this->templates)] ?? '';
   }
 
+  /**
+   *
+   * @param string|NULL $input_template
+   *
+   * @return string
+   */
   public function parseTemplate(string $input_template = NULL): string {
     $template = $input_template ?? $this->randomTemplate();
     $tags = [];
