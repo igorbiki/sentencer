@@ -5,7 +5,7 @@ namespace Sentencer\generator;
 /**
  * Listing required function that actual generate must implement.
  */
-interface GeneratorInterface {
+interface SentenceGeneratorInterface {
 
   /**
    * Randomly generates sentence.

@@ -7,7 +7,7 @@ use Sentencer\sentences\SentencerInterface;
 /**
  * Sentence generator that uses sentencer to construct a sentence.
  */
-class Generator implements GeneratorInterface {
+class SentenceGenerator implements SentenceGeneratorInterface {
 
   private const MAX_SENTENCES = 20;
 
