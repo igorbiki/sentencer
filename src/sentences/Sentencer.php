@@ -5,7 +5,6 @@ namespace Sentencer\sentences;
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
-use JsonException;
 use Sentencer\articles\ArticlesInterface;
 
 /**

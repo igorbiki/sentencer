@@ -2,9 +2,11 @@
 
 namespace Sentencer\generator;
 
-use JsonException;
 use Sentencer\sentences\SentencerInterface;
 
+/**
+ * Sentence generator that uses sentencer to construct a sentence.
+ */
 class Generator implements GeneratorInterface {
 
   private const MAX_SENTENCES = 20;
