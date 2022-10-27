@@ -10,3 +10,9 @@ Should support:
 
 Implementation: 
 Drupal 9 custom module - generator will use this service to create easy way to generate custom random text.
+
+
+### How to use this
+* Clone this repo
+* run `composer install`
+* either run `php index.php` from command line or open index.php with browser

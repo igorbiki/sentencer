@@ -17,4 +17,12 @@ $container->add(Articles::class);
 /** @var \Sentencer\generator\SentenceGeneratorInterface $g */
 $g = $container->get(SentenceGenerator::class);
 
+print("Random sentence: " . PHP_EOL);
 print($g->generateSentence());
+print(PHP_EOL);
+print("Random title: " . PHP_EOL);
+print($g->generateTitle());
+print(PHP_EOL);
+print("Random short label: " . PHP_EOL);
+print($g->generateShortLabel());
+print(PHP_EOL);

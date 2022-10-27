@@ -105,7 +105,7 @@ class SentenceGenerator implements SentenceGeneratorInterface {
       $output .= ' ' . ucfirst($this->randomPhrase() . $this->parseTemplate()) . '.';
     }
 
-    return $output;
+    return trim($output);
   }
 
   /**
