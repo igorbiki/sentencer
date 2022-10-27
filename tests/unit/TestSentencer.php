@@ -5,8 +5,8 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use Sentencer\articles\Articles;
-use Sentencer\generator\Generator;
-use Sentencer\generator\GeneratorInterface;
+use Sentencer\generator\SentenceGenerator;
+use Sentencer\generator\SentenceGeneratorInterface;
 use Sentencer\sentences\Sentencer;
 use Sentencer\sentences\SentencerInterface;
 
@@ -14,7 +14,7 @@ final class TestSentencer extends TestCase {
 
   protected SentencerInterface $sentencer;
 
-  protected GeneratorInterface $generator;
+  protected SentenceGeneratorInterface $generator;
 
   /**
    * {@inheritDoc}
@@ -32,7 +32,7 @@ final class TestSentencer extends TestCase {
     parent::setUp();
 
     $this->sentencer = new Sentencer(new Articles());
-    $this->generator = new Generator($this->sentencer);
+    $this->generator = new SentenceGenerator($this->sentencer);
   }
 
   public function testConfig(): void {
