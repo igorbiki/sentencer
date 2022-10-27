@@ -10,7 +10,7 @@ use Sentencer\generator\SentenceGeneratorInterface;
 use Sentencer\sentences\Sentencer;
 use Sentencer\sentences\SentencerInterface;
 
-final class TestSentencer extends TestCase {
+final class SentencerTest extends TestCase {
 
   protected SentencerInterface $sentencer;
 

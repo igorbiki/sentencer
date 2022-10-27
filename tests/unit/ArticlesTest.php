@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use PHPUnit\Framework\TestCase;
 use Sentencer\articles\Articles;
 
-final class TestArticles extends TestCase {
+final class ArticlesTest extends TestCase {
 
   protected Articles $articles;
 

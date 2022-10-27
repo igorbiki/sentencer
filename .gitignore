@@ -1,2 +1,5 @@
 # Ignoring folders/files
 vendor/
+
+# PHPUnit test cache file
+.phpunit.result.cache
