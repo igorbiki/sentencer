@@ -17,13 +17,6 @@ final class SentencerTest extends TestCase {
   protected SentenceGeneratorInterface $generator;
 
   /**
-   * {@inheritDoc}
-   */
-  public function __construct() {
-    parent::__construct();
-  }
-
-  /**
    * Prepare environment for testing.
    *
    * @throws \JsonException
@@ -42,6 +35,9 @@ final class SentencerTest extends TestCase {
     $this->assertGreaterThan(0, $overview['adjectives'], 'There are no adjectives loaded.');
   }
 
+  public function testRandomTemplate(): void {
+    $this->assertNotEmpty($this->generator->randomTemplate());
+  }
 
   public function testSentences(): void {
     $this->assertEquals('a car', $this->sentencer->a_noun('car'), 'Incorrect adjective detected.');
@@ -49,6 +45,8 @@ final class SentencerTest extends TestCase {
 
   public function testGenerator(): void {
     $this->assertEquals('test sentence', $this->generator->parseTemplate('test sentence'));
+    $this->assertNotEmpty($this->generator->generateTitle());
+    $this->assertNotEmpty($this->generator->generateShortLabel());
     $this->assertNotEmpty($this->generator->generateSentence());
     $this->assertNotEmpty($this->generator->generateSentence(2));
   }
